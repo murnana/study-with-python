@@ -45,20 +45,48 @@
 <dt id="Perceptron.Perceptron">
 <em class="property">class </em><code class="descclassname">Perceptron.</code><code class="descname">Perceptron</code><span class="sig-paren">(</span><em>count</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Perceptron.html#Perceptron"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#Perceptron.Perceptron" title="この定義へのパーマリンク">¶</a></dt>
 <dd><p>ベースクラス: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>パーセプトロン
+正確には、パーセプトロンのノード</p>
 <dl class="method">
 <dt id="Perceptron.Perceptron.get_weight">
 <code class="descname">get_weight</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/Perceptron.html#Perceptron.get_weight"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#Perceptron.Perceptron.get_weight" title="この定義へのパーマリンク">¶</a></dt>
-<dd></dd></dl>
+<dd><p>学習した重みを返す</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="Perceptron.Perceptron.output">
 <code class="descname">output</code><span class="sig-paren">(</span><em>num</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Perceptron.html#Perceptron.output"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#Perceptron.Perceptron.output" title="この定義へのパーマリンク">¶</a></dt>
-<dd></dd></dl>
+<dd><p>こいつ発火するのかい？を聞くための関数</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><strong>num</strong> – 発火するかどうかを確かめる</td>
+</tr>
+</tbody>
+</table>
+<p>:type num : numpy.array([[,,,],…])</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="Perceptron.Perceptron.training">
 <code class="descname">training</code><span class="sig-paren">(</span><em>train_x</em>, <em>train_y</em>, <em>eta</em>, <em>epoch</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/Perceptron.html#Perceptron.training"><span class="viewcode-link">[ソース]</span></a><a class="headerlink" href="#Perceptron.Perceptron.training" title="この定義へのパーマリンク">¶</a></dt>
-<dd></dd></dl>
+<dd><p>学習用関数</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">パラメータ:</th><td class="field-body"><ul class="first last simple">
+<li><strong>train_x</strong> (<em>numpy.array</em>) – 問題</li>
+<li><strong>train_y</strong> (<em>numpy.array</em>) – 問題の答え</li>
+<li><strong>eta</strong> (<em>int</em>) – 学習係数</li>
+<li><strong>epoch</strong> (<em>int</em>) – 何度学習させるか</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </dd></dl>
 

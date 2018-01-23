@@ -43,32 +43,59 @@
 <span></span><span class="kn">import</span> <span class="nn">numpy</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span>
 
-<span class="c1"># パーセプトロン</span>
-<span class="c1"># 正確には、パーセプトロンのノード</span>
 <div class="viewcode-block" id="Perceptron"><a class="viewcode-back" href="../Perceptron.html#Perceptron.Perceptron">[ドキュメント]</a><span class="k">class</span> <span class="nc">Perceptron</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    パーセプトロン</span>
+<span class="sd">    正確には、パーセプトロンのノード</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">count</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        初期化</span>
+
+<span class="sd">        :param int count:何次元か</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__weight</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
 
-    <span class="c1"># パーセプトロンの基本的な動き</span>
-    <span class="c1"># 閾値を超えたら(発火したら)1を返し、そうでないときは0を返す</span>
     <span class="k">def</span> <span class="nf">__step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">num</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        パーセプトロンの基本的な動き</span>
+<span class="sd">        閾値を超えたら(発火したら)1を返し、そうでないときは0を返す</span>
+
+<span class="sd">        :param int num: 発火するかどうかを判定する値</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">num</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">1</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="mi">0</span>
 
-    <span class="c1"># こいつ発火するのかい？を聞くための関数</span>
 <div class="viewcode-block" id="Perceptron.output"><a class="viewcode-back" href="../Perceptron.html#Perceptron.Perceptron.output">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">num</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        こいつ発火するのかい？を聞くための関数</span>
+
+<span class="sd">        :param num: 発火するかどうかを確かめる</span>
+<span class="sd">        :type num : numpy.array([[,,,],...])</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__step</span><span class="p">(</span> <span class="n">numpy</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">num</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__weight</span> <span class="p">)</span> <span class="p">)</span></div>
 
-    <span class="c1"># 学習用関数</span>
 <div class="viewcode-block" id="Perceptron.training"><a class="viewcode-back" href="../Perceptron.html#Perceptron.Perceptron.training">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">training</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">,</span> <span class="n">eta</span><span class="p">,</span> <span class="n">epoch</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        学習用関数</span>
+
+<span class="sd">        :param numpy.array train_x: 問題</span>
+<span class="sd">        :param numpy.array train_y: 問題の答え</span>
+<span class="sd">        :param int eta: 学習係数</span>
+<span class="sd">        :param int epoch: 何度学習させるか</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epoch</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span><span class="n">train_y</span><span class="p">):</span>
                 <span class="n">o</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">__weight</span> <span class="o">+=</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">o</span><span class="p">)</span> <span class="o">*</span> <span class="n">eta</span></div>
 
 <div class="viewcode-block" id="Perceptron.get_weight"><a class="viewcode-back" href="../Perceptron.html#Perceptron.Perceptron.get_weight">[ドキュメント]</a>    <span class="k">def</span> <span class="nf">get_weight</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        学習した重みを返す</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__weight</span></div></div>
 
 

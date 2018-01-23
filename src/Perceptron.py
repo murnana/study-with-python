@@ -1,32 +1,59 @@
 import numpy
 from matplotlib import pyplot
 
-# パーセプトロン
-# 正確には、パーセプトロンのノード
 class Perceptron:
+    """
+    パーセプトロン
+    正確には、パーセプトロンのノード
+    """
+
     def __init__(self,count):
+        """
+        初期化
+
+        :param int count:何次元か
+        """
         self.__weight = numpy.zeros(count)
 
-    # パーセプトロンの基本的な動き
-    # 閾値を超えたら(発火したら)1を返し、そうでないときは0を返す
     def __step(self,num):
+        """
+        パーセプトロンの基本的な動き
+        閾値を超えたら(発火したら)1を返し、そうでないときは0を返す
+
+        :param int num: 発火するかどうかを判定する値
+        """
         if num > 0:
             return 1
         else:
             return 0
 
-    # こいつ発火するのかい？を聞くための関数
     def output(self,num):
+        """
+        こいつ発火するのかい？を聞くための関数
+
+        :param num: 発火するかどうかを確かめる
+        :type num : numpy.array([[,,,],...])
+        """
         return self.__step( numpy.dot( num, self.__weight ) )
 
-    # 学習用関数
     def training(self, train_x, train_y, eta, epoch):
+        """
+        学習用関数
+
+        :param numpy.array train_x: 問題
+        :param numpy.array train_y: 問題の答え
+        :param int eta: 学習係数
+        :param int epoch: 何度学習させるか
+        """
         for i in range(epoch):
             for x,y in zip(train_x,train_y):
                 o = self.output(x)
                 self.__weight += x * (y - o) * eta
 
     def get_weight(self):
+        """
+        学習した重みを返す
+        """
         return self.__weight
 
 
