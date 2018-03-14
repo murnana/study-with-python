@@ -18,7 +18,7 @@
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
 import os, sys
-sys.path.insert(0, os.path.abspath('./'))
+sys.path.insert(0, os.path.abspath('.'))
 sys.path.insert(0, os.path.abspath('../src'))
 
 
@@ -32,7 +32,6 @@ sys.path.insert(0, os.path.abspath('../src'))
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = ['sphinx.ext.autodoc',
-    'sphinx.ext.viewcode',
     'sphinx.ext.githubpages']
 
 # Add any paths that contain templates here, relative to this directory.
@@ -114,12 +113,6 @@ html_sidebars = {
 }
 
 
-# -- Options for HTMLHelp output ------------------------------------------
-
-# Output file base name for HTML help builder.
-htmlhelp_basename = 'study_with_pythondoc'
-
-
 # -- Options for LaTeX output ---------------------------------------------
 
 latex_elements = {
@@ -147,28 +140,5 @@ latex_documents = [
     (master_doc, 'study_with_python.tex', 'study\\_with\\_python Documentation',
      'murnana', 'manual'),
 ]
-
-
-# -- Options for manual page output ---------------------------------------
-
-# One entry per manual page. List of tuples
-# (source start file, name, description, authors, manual section).
-man_pages = [
-    (master_doc, 'study_with_python', 'study_with_python Documentation',
-     [author], 1)
-]
-
-
-# -- Options for Texinfo output -------------------------------------------
-
-# Grouping the document tree into Texinfo files. List of tuples
-# (source start file, target name, title, author,
-#  dir menu entry, description, category)
-texinfo_documents = [
-    (master_doc, 'study_with_python', 'study_with_python Documentation',
-     author, 'study_with_python', 'One line description of project.',
-     'Miscellaneous'),
-]
-
 
 

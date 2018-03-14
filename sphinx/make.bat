@@ -2,18 +2,15 @@
 
 pushd %~dp0
 
-REM Command file for Sphinx documentation
-
 if "%SPHINXBUILD%" == "" (
 	set SPHINXBUILD=python -msphinx
 )
-set SOURCEDIR=./
-set PYTHON_SRC=../src
-set BUILDDIR=../docs
-set SPHINXPROJ=study_with_python
-set SPHINXOPTS=-d ./_build/doctrees 
-
-if "%1" == "" goto help
+set SOURCEDIR="./"
+set BUILDDIR="../docs"
+set PY_SRC="../src"
+set PY_RST="./_modules"
+set SPHINXPROJ="study_with_python"
+set SPHINXOPTS=-d "./_build/doctrees"
 
 %SPHINXBUILD% >NUL 2>NUL
 if errorlevel 9009 (
@@ -28,13 +25,7 @@ if errorlevel 9009 (
 	exit /b 1
 )
 
-sphinx-apidoc -f -o %SOURCEDIR% %PYTHON_SRC%
-%SPHINXBUILD% -M %1 %SPHINXOPTS% %SOURCEDIR% %BUILDDIR%
-goto end
+sphinx-apidoc -M -f -T -o %PY_RST% %PY_SRC%
+%SPHINXBUILD% -M html %SPHINXOPTS% %SOURCEDIR% %BUILDDIR%
 
-:help
-%SPHINXBUILD% -M help %SOURCEDIR% %BUILDDIR% %SPHINXOPTS%
-goto end
-
-:end
 popd

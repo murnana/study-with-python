@@ -103,4 +103,3 @@ if __name__ == "__main__":
     pyplot.plot(false_x[:,0], false_x[:,1], "^", color="#77FF77", label="false")
 
     pyplot.show()
-    
