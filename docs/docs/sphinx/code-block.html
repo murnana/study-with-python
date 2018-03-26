@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>2. Pythonオブジェクトに対するマークアップ集 &#8212; study_with_python 0.0.0 ドキュメント</title>
+    <title>1. code-blockディレクティブ &#8212; study_with_python 0.0.0 ドキュメント</title>
     <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <script type="text/javascript" src="../../_static/documentation_options.js"></script>
@@ -16,8 +16,8 @@
     <script type="text/javascript" src="../../_static/translations.js"></script>
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="検索" href="../../search.html" />
-    <link rel="next" title="Sphinx" href="../sphinx/index.html" />
-    <link rel="prev" title="1. リテラルブロック" href="literal_block.html" />
+    <link rel="next" title="2. シンタックスハイライト(highlight)" href="highlight.html" />
+    <link rel="prev" title="Sphinx" href="index.html" />
    
   <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
   
@@ -32,12 +32,24 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="python">
-<h1>2. Pythonオブジェクトに対するマークアップ集<a class="headerlink" href="#python" title="このヘッドラインへのパーマリンク">¶</a></h1>
+  <div class="section" id="code-block">
+<h1>1. code-blockディレクティブ<a class="headerlink" href="#code-block" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<p>シンタックスハイライトとは別に個別に指定したい場合など</p>
+<div class="highlight-restructuredtext notranslate"><div class="highlight"><pre><span></span>シンタックスハイライトはこんな感じ
+<span class="p">..</span> <span class="ow">code-block</span><span class="p">::</span> restructuredtext
+
+<span class="p">    ..</span> <span class="ow">highlight</span><span class="p">::</span> restructuredtext
+おわり
+</pre></div>
+</div>
 <div class="section" id="id1">
-<h2>2.1. 参考<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<h2>1.1. 参考<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <ul class="simple">
-<li><a class="reference external" href="http://www.sphinx-doc.org/ja/stable/domains.html#python-roles">Sphinxドメイン — Sphinx 1.5.6 ドキュメント</a></li>
+<li><a class="reference external" href="http://www.sphinx-doc.org/ja/stable/rest.html#source-code">reStructuredText入門 — Sphinx 1.5.6 ドキュメント</a></li>
+<li><a class="reference external" href="http://www.sphinx-doc.org/ja/stable/markup/code.html">コードサンプルの表示 — Sphinx 1.5.6 ドキュメント</a></li>
+<li><a class="reference external" href="http://planset-study-sphinx.readthedocs.io/ja/latest/04.html#id10">4. Sphinxでの文章の書き方(reStructuredText) — study sphinx 1 documentation</a></li>
+<li><a class="reference external" href="http://usaturn.net/osc/07/write_rest4.html">リテラルブロック (コードブロック) その１ — Sphinx Quickstart 0.1 documentation</a></li>
+<li><a class="reference external" href="http://pygments.org/docs/lexers/">Available lexers — Pygments</a></li>
 </ul>
 </div>
 </div>
@@ -60,21 +72,21 @@
 <h3>ナビゲーション</h3>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../paver/index.html">Paver</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">reStructuredText</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="literal_block.html">1. リテラルブロック</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">2. Pythonオブジェクトに対するマークアップ集</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reStructuredText/index.html">reStructuredText</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Sphinx</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1. code-blockディレクティブ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="highlight.html">2. シンタックスハイライト(highlight)</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../sphinx/index.html">Sphinx</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../../index.html">Documentation overview</a><ul>
-  <li><a href="index.html">reStructuredText</a><ul>
-      <li>Previous: <a href="literal_block.html" title="前の章へ">1. リテラルブロック</a></li>
-      <li>Next: <a href="../sphinx/index.html" title="次の章へ">Sphinx</a></li>
+  <li><a href="index.html">Sphinx</a><ul>
+      <li>Previous: <a href="index.html" title="前の章へ">Sphinx</a></li>
+      <li>Next: <a href="highlight.html" title="次の章へ">2. シンタックスハイライト(highlight)</a></li>
   </ul></li>
   </ul></li>
 </ul>
@@ -103,7 +115,7 @@
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
-      <a href="../../_sources/docs/reStructuredText/python-markup.rst.txt"
+      <a href="../../_sources/docs/sphinx/code-block.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

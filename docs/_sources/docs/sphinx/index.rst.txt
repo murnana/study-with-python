@@ -16,6 +16,6 @@ APIドキュメントに向いている
 .. toctree::
     :glob:
     :titlesonly:
+    :numbered:
 
     *
-

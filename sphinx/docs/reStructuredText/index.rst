@@ -17,6 +17,6 @@ http://docutils.sourceforge.net/rst.html
 .. toctree::
     :glob:
     :titlesonly:
+    :numbered:
 
     *
-

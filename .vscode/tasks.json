@@ -10,7 +10,7 @@
                 "isDefault": true
             },
             "type": "shell",
-            "command": "${workspaceRoot}/sphinx/make",
+            "command": "paver create_docs",
             "promptOnClose": true,
             "problemMatcher": []
         },
