@@ -4,13 +4,21 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "Make doc",
             "group": {
                 "kind": "build",
-                "isDefault": false
+                "isDefault": true
             },
-            "label": "Make Sphinx",
             "type": "shell",
-            "command": "${workspaceRoot}/sphinx/make html",
+            "command": "paver create_docs",
+            "promptOnClose": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "Upgrade Workflow",
+            "group": "none",
+            "type": "shell",
+            "command": "pipenv update",
             "promptOnClose": true,
             "problemMatcher": []
         }
