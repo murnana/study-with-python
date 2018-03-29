@@ -12,7 +12,7 @@ reStructuredTextにテキストファイルを読み込みたいときに
 
 結果は以下。
 
-.. include:: ../../../setup.py
+.. include:: ../../../../setup.py
     :code: python
 
 

@@ -7,13 +7,6 @@ Pythonの勉強
 .. toctree::
     :glob:
     :titlesonly:
+    :includehidden:
 
     **/index
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

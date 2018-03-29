@@ -14,7 +14,7 @@ Pavement.pyの中身
 
 このプロジェクトでの中身
 =========================
-.. include:: ../../../pavement.py
+.. include:: ../../../../pavement.py
     :code: python
 
 
