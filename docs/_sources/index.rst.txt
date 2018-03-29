@@ -5,8 +5,6 @@ Pythonの勉強
 お品書き
 ==================
 .. toctree::
-    :glob:
     :titlesonly:
-    :includehidden:
 
-    **/index
+    docs/modules/index
