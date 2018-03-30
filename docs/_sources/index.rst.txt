@@ -8,3 +8,4 @@ Pythonの勉強
     :titlesonly:
 
     docs/modules/index
+    docs/books/index
