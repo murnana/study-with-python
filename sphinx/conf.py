@@ -103,10 +103,11 @@ html_theme_options = {
     'root_include_title': False
 }
 
-# Add any paths that contain custom static files (such as style sheets) here,
-# relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
-# html_static_path = ['_static']
+# 追加のテンプレート(もしくは組み込みのテーマに関するテンプレートをオーバーライトするテンプレート)が含まれているパスのリストです。
+# 設定ディレクトリからの相対パスで設定します。
+#
+# バージョン 1.3 で変更: これらのファイルは自動的に exclude_patterns に追加され、ビルドの対象にはなりません。
+templates_path = ['_templates']
 
 
 # -- Options for LaTeX output ---------------------------------------------
