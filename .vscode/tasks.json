@@ -9,6 +9,11 @@
                 "kind": "build",
                 "isDefault": true
             },
+            "options": {
+                "env": {
+                    "PATH": "${workspaceFolder}/.venv/Scripts"
+                }
+            },
             "type": "shell",
             "command": "paver create_docs",
             "promptOnClose": true,
