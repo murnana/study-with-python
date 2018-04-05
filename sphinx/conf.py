@@ -29,10 +29,15 @@ sys.path.insert(0, os.path.abspath('../src'))
 #
 # needs_sphinx = '1.0'
 
-# Add any Sphinx extension module names here, as strings. They can be
-# extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
-# ones.
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.githubpages', 'sphinx.ext.viewcode']
+"""
+拡張モジュール
+"""
+extensions = [
+    'sphinx.ext.autodoc',       # apiドキュメントを自動生成
+    'sphinx.ext.githubpages',   # Github Pagesに公開するための設定群
+    'sphinx.ext.viewcode',      # ソースコードを描画する
+    'sphinx.ext.graphviz'       # グラフを書く
+]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

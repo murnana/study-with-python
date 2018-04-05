@@ -14,8 +14,8 @@ APIドキュメントに向いている
 お品書き
 ==================
 .. toctree::
-    :glob:
     :titlesonly:
     :numbered:
 
-    *
+    markup
+    ext
