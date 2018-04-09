@@ -3,14 +3,6 @@
     "python.pythonPath": "${workspaceFolder}/.venv/scripts/python.exe",
     "terminal.integrated.env.windows": {
         "PIPENV_VENV_IN_PROJECT": true,
-        "PATH": "${env:PATH};${workspaceFolder}/.venv/Scripts"
-    },
-    "terminal.integrated.env.osx": {
-        "PIPENV_VENV_IN_PROJECT": true,
-        "PATH": "${env:PATH};${workspaceFolder}/.venv/Scripts"
-    },
-    "terminal.integrated.env.linux": {
-        "PIPENV_VENV_IN_PROJECT": true,
-        "PATH": "${env:PATH};${workspaceFolder}/.venv/Scripts"
+        "PATH": "${workspaceFolder}/.venv/Scripts;${env:PATH};"
     }
 }

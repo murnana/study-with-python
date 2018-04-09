@@ -62,7 +62,7 @@ def create_docs():
 
     """
     create_apidoc(['-f', '-o', _api_reSt_path, _module_path])
-    build(['-b', 'html', '-d', _doctree_path, '-D', '%PATH%', _sphinx_path, _docs_path])
+    build(['-b', 'html', '-d', _doctree_path, _sphinx_path, _docs_path])
 
 @task
 def recreate_docs():

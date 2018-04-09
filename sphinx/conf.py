@@ -90,6 +90,11 @@ pygments_style = 'sphinx'
 todo_include_todos = False
 
 
+# -- Options for Graphviz -------------------------------------------------
+
+graphviz_output_format = 'svg'
+
+
 # -- Options for HTML output ----------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for

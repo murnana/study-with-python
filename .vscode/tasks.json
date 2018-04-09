@@ -9,13 +9,16 @@
                 "kind": "build",
                 "isDefault": true
             },
-            "options": {
-                "env": {
-                    "PATH": "${workspaceFolder}/.venv/Scripts"
-                }
-            },
             "type": "shell",
             "command": "paver create_docs",
+            "promptOnClose": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "Remake doc",
+            "group": "build",
+            "type": "shell",
+            "command": "paver recreate_docs",
             "promptOnClose": true,
             "problemMatcher": []
         },
