@@ -36,7 +36,8 @@ extensions = [
     'sphinx.ext.autodoc',       # apiドキュメントを自動生成
     'sphinx.ext.githubpages',   # Github Pagesに公開するための設定群
     'sphinx.ext.viewcode',      # ソースコードを描画する
-    'sphinx.ext.graphviz'       # グラフを書く
+    'sphinx.ext.graphviz',      # グラフを書く
+    'sphinx.ext.imgmath'        # LaTex
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -148,4 +149,5 @@ latex_documents = [
      'murnana', 'manual'),
 ]
 
+imgmath_image_format = 'svg'
 

@@ -68,6 +68,34 @@
             
   <div class="section" id="id1">
 <h1>3章 ニューラルネットワーク<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="section" id="id2">
+<h2>パーセプトロンの復習<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<object data="../../../_images/graphviz-298221b79d9ea23944cc6e664b96eeaa5780a3c7.svg" type="image/svg+xml">
+            <p class="warning">digraph perceptron {
+    graph [
+        charset = &quot;UTF-8&quot;;
+        rankdir = LR;
+    ];
+
+    x1 [label = &lt;x&lt;sub&gt;1&lt;/sub&gt;&gt;];
+    x2 [label = &lt;x&lt;sub&gt;2&lt;/sub&gt;&gt;];
+    y;
+
+    x1 -&gt; y [
+        label = &lt;w&lt;sub&gt;1&lt;/sub&gt;&gt;
+    ];
+    x2 -&gt; y [
+        label = &lt;w&lt;sub&gt;2&lt;/sub&gt;&gt;
+    ];
+}</p></object>
+<div class="math">
+<p><img src="../../../_images/math/e27099e3a95535b960b02d9bab4e656ef441786e.svg" alt="\begin{split}
+    y = \left\{ \begin{array}{ll}
+        0 &amp; (b + w_{1}x_{1} + w_{2}x_{2} \leqq 0) \\
+        1 &amp; (b + w_{1}x_{1} + w_{2}x_{2} &gt; 0)
+    \end{array} \right.
+\end{split}"/></p>
+</div></div>
 </div>
 
 
@@ -76,6 +104,14 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../../../index.html">目次</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3章 ニューラルネットワーク</a><ul>
+<li><a class="reference internal" href="#id2">パーセプトロンの復習</a></li>
+</ul>
+</li>
+</ul>
+
   <h4>前のトピックへ</h4>
   <p class="topless"><a href="ch02.html"
                         title="前の章へ">2章 パーセプトロン</a></p>
