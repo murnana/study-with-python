@@ -123,31 +123,60 @@ templates_path = ['_templates']
 
 # -- Options for LaTeX output ---------------------------------------------
 
-latex_elements = {
-    # The paper size ('letterpaper' or 'a4paper').
-    #
-    # 'papersize': 'letterpaper',
+"""
+The LaTeX engine to build the docs. The setting can have the following values:
 
-    # The font size ('10pt', '11pt' or '12pt').
-    #
-    # 'pointsize': '10pt',
+    - 'pdflatex' -- PDFLaTeX (default)
+    - 'xelatex' -- XeLaTeX
+    - 'lualatex' -- LuaLaTeX
+    - 'platex' -- pLaTeX (default if language is 'ja')
+"""
+latex_engine = 'platex'
 
-    # Additional stuff for the LaTeX preamble.
-    #
-    # 'preamble': '',
 
-    # Latex figure (float) alignment
-    #
-    # 'figure_align': 'htbp',
+
+"""
+この値はドキュメントツリーをどのようにグループ化してLaTeXソースに含めるか決定します。
+これは、 (startdocname, targetname, title, author, documentclass, toctree_only)
+というタプルのリストでなければなりません。
+"""
+latex_documents = [(
+    master_doc,                             # startdocname
+    'study_with_python.tex',                # targetname
+    'study\\_with\\_python Documentation',  # title
+    'murnana',                              # author
+    'manual',                               # documentclass
+    True,                                   # toctree_only
+),]
+
+"""
+'howto' と 'manual' から実際にSphinxのクラスとして使われる
+document classへのマッピングをする辞書です。
+デフォルトでは 'howto' には 'article', 'manual' には 'report' が使われます。
+
+バージョン 1.5 で変更:
+    In Japanese docs (language is 'ja'),
+    by default 'jreport' is used for 'howto' and 'jsbook' for 'manual'.
+"""
+latex_docclass = {
+    'manual': 'jsbook',
+    'howto': 'jreport',
 }
 
-# Grouping the document tree into LaTeX files. List of tuples
-# (source start file, target name, title,
-#  author, documentclass [howto, manual, or own class]).
-latex_documents = [
-    (master_doc, 'study_with_python.tex', 'study\\_with\\_python Documentation',
-     'murnana', 'manual'),
-]
-
+# -- sphinx.ext.imgmath -- 数式を画像にレンダリングします ---------------------
+"""
+出力する画像のフォーマット。
+デフォルトは 'png' です。 'png' または 'svg' のいずれかの値をとります。
+"""
 imgmath_image_format = 'svg'
+
+# """
+# 数式のコード片を変換するのに使用する、
+# 短いLaTeXファイルの中の前置きとして入れる、
+# 追加のLaTeXコードです。
+# デフォルトでは空です。
+# このオプションは、例えば、
+# 数式の中で使いたいコマンドのためのパッケージを追加するのに使えます。
+# """
+# imgmath_latex_preamble = []
 

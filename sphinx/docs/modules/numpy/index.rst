@@ -8,12 +8,3 @@ NumPy
 
 数学で使用する関数を提供するライブラリ。
 MATLABとかSciPyとよく比較されるらしい。
-
-お品書き
-==================
-.. toctree::
-    :glob:
-    :titlesonly:
-    :numbered:
-
-    *
