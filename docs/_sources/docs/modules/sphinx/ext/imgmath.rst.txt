@@ -2,6 +2,26 @@
 sphinx.ext.imgmath - LaTex
 ===============================================================================
 
+LaTexを使って数式を書くための拡張機能
+
+.. code-block:: reStructuredText
+
+    ..math::
+
+    h(x) = \frac{1 + \exp(-x)}{1}
+
+
+..math::
+
+    h(x) = \frac{1 + \exp(-x)}{1}
+
+
+.. warning::
+
+    ``..math::`` そのものは結構簡単に競合するらしい。目的によって分けよう。今わかっているのは 
+    
+    ``sphinx.ext.imgmath`` と ``matplotlib.sphinxext.mathmpl``  
+
 
 .. seealso::
 
