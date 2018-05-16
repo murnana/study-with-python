@@ -22,3 +22,6 @@
 
 
 ここでいうexpとは **ネイピア数** のことを指す。
+
+
+.. plot:: ../src/books/deep_learning_from_scratch/stepAndSigmoid.py

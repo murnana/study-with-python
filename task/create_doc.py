@@ -3,13 +3,14 @@ Sphinxドキュメントを生成するタスク
 通常、Paverのdoctoolsを使うのだが、このプロジェクトの構造に合わせたいので作成
 """
 
-import os, shutil, sphinx.cmd.build, sphinx.ext.apidoc
+import shutil, sphinx.cmd.build, sphinx.ext.apidoc
 from paver.easy import dry, task, needs
+from pathlib import Path
 
 _sphinx_path = 'sphinx'
 _doctree_path = 'sphinx/__doctree__'
-_api_reSt_path = 'sphinx/api'
-_module_path = 'src'
+_api_reSt_path = Path('sphinx', 'api')
+_module_path = Path('src')
 _docs_path = 'docs'
 
 def create_apidoc(option):
@@ -39,11 +40,17 @@ def clear(dir):
     ディレクトリごと削除
         :param str dir:ディレクトリ
     """
-    if(os.path.exists(dir)):
+    if(Path(dir).exists()):
         print('%s is delete...' % dir)
         shutil.rmtree(dir)
         print('%s is done delete!' % dir)
 
+
+def get_dirlist(path):
+    list = [p for p in path.iterdir() if p.is_dir()]
+    for p in list:
+        list += get_dirlist(p)
+    return [p for p in list if p != None]
 
 
 @task
@@ -61,7 +68,15 @@ def create_docs():
         :param list[str] option: sphinx-buildオプション
 
     """
-    create_apidoc(['-f', '-o', _api_reSt_path, _module_path])
+    for p in get_dirlist(_module_path):
+        if(p.name == '__pycache__'): continue
+        relative = p.relative_to(_module_path)
+        input_path = str(p)
+        out_path = str(_api_reSt_path.joinpath(relative))
+        # print(input_path)
+        # print(out_path)
+        create_apidoc(['-f', '--follow-links', '-o', out_path, input_path])
+
     build(['-b', 'html', '-d', _doctree_path, _sphinx_path, _docs_path])
 
 @task

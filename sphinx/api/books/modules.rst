@@ -1,7 +1,6 @@
-src
-===
+books
+=====
 
 .. toctree::
    :maxdepth: 4
 
-   DirectProduct

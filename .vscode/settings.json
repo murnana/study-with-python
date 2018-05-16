@@ -1,8 +1,11 @@
 {
     "python.venvPath": "${workspaceFolder}/.venv",
-    "python.pythonPath": "${workspaceFolder}/.venv/scripts/python.exe",
+    "python.pythonPath": "${workspaceFolder}/.venv/Scripts/python.exe",
     "terminal.integrated.env.windows": {
-        "PIPENV_VENV_IN_PROJECT": true,
+        "PIPENV_VENV_IN_PROJECT": "${workspaceFolder}/.venv",
+        "WORKON_HOME": "${workspaceFolder}/.venv",
         "PATH": "${workspaceFolder}/.venv/Scripts;${env:PATH};"
-    }
+    },
+    "restructuredtext.builtDocumentationPath": "${workspaceFolder}/docs",
+    "restructuredtext.confPath": "${workspaceRoot}/sphinx",
 }
