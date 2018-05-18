@@ -14,6 +14,7 @@
     <script type="text/javascript" src="../../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../../_static/translations.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="検索" href="../../../search.html" />
     <link rel="prev" title="2章 パーセプトロン" href="ch02.html" />
@@ -73,10 +74,25 @@
 <div class="section" id="id2">
 <h2>シグモイド関数<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
 <p>シグモイド関数の一般項は</p>
-<img src="../../../_images/mathmpl/math-bd018d40b9.png" class="center" /><p>ここでいうexpとは <strong>ネイピア数</strong> のことを指す。</p>
-<p>(<a class="reference external" href="../../../../src/books/deep_learning_from_scratch/stepAndSigmoid.py">Source code</a>, <a class="reference external" href="../../../../src/books/deep_learning_from_scratch/stepAndSigmoid.png">png</a>, <a class="reference external" href="../../../../src/books/deep_learning_from_scratch/stepAndSigmoid.hires.png">hires.png</a>, <a class="reference external" href="../../../../src/books/deep_learning_from_scratch/stepAndSigmoid.pdf">pdf</a>)</p>
+<div class="math notranslate nohighlight">
+\[h(x) = \frac{1 + \exp(-x)}{1}\]</div>
+<p>ここでいうexpとは <strong>ネイピア数</strong> のことを指す。</p>
+<p>(<a class="reference external" href="../../../../src/books/deep_learning_from_scratch/stepAndSigmoid.py">Source code</a>)</p>
 <div class="figure">
 <img alt="../../../_images/stepAndSigmoid.png" src="../../../_images/stepAndSigmoid.png" />
+</div>
+</div>
+<div class="section" id="rectified-linear-unit-relu">
+<h2>Rectified Linear Unit; ReLU (正規化線形関数、ランプ関数)<a class="headerlink" href="#rectified-linear-unit-relu" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>ReLUは、 <strong>0未満の時は0、0以上の時は0以上の値</strong> を出力する関数</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}h(x) = \left\{ \begin{array}{ll}
+    x &amp; (x &gt; 0) \\
+    0 &amp; (x \leq 0)
+\end{array} \right.\end{split}\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">relu</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
 </div>
@@ -91,6 +107,7 @@
   <ul>
 <li><a class="reference internal" href="#">3章 ニューラルネットワーク</a><ul>
 <li><a class="reference internal" href="#id2">シグモイド関数</a></li>
+<li><a class="reference internal" href="#rectified-linear-unit-relu">Rectified Linear Unit; ReLU (正規化線形関数、ランプ関数)</a></li>
 </ul>
 </li>
 </ul>

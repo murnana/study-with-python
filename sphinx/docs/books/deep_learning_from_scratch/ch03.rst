@@ -25,3 +25,23 @@
 
 
 .. plot:: ../src/books/deep_learning_from_scratch/stepAndSigmoid.py
+
+
+
+Rectified Linear Unit; ReLU (正規化線形関数、ランプ関数)
+==========================================================
+
+ReLUは、 **0未満の時は0、0以上の時は0以上の値** を出力する関数
+
+.. math::
+
+    h(x) = \left\{ \begin{array}{ll}
+        x & (x > 0) \\
+        0 & (x \leq 0)
+    \end{array} \right.
+
+
+.. code-block:: python
+
+    def relu(x):
+        return np.maximum(0, x)
