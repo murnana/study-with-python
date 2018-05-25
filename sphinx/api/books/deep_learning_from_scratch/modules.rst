@@ -1,7 +1,0 @@
-deep_learning_from_scratch
-==========================
-
-.. toctree::
-   :maxdepth: 4
-
-   stepAndSigmoid

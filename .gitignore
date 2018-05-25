@@ -65,6 +65,8 @@ instance/
 sphinx/_build/
 sphinx/_modules/
 __doctree__/
+sphinx/docs/_modules/
+sphinx/src/
 
 # PyBuilder
 target/
@@ -100,3 +102,10 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# pipenv
+.venv/
+
+# /src/**
+/src/**/*.pdf
+/src/**/*.png

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>3章 ニューラルネットワーク &#8212; study_with_python 0.0.0 ドキュメント</title>
+    <title>3. 引用 &#8212; study_with_python 0.0.0 ドキュメント</title>
     <link rel="stylesheet" href="../../../_static/pydoctheme.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <script type="text/javascript" src="../../../_static/documentation_options.js"></script>
@@ -17,7 +17,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="検索" href="../../../search.html" />
-    <link rel="prev" title="2章 パーセプトロン" href="ch02.html" />
+    <link rel="next" title="Sphinx" href="../sphinx/index.html" />
+    <link rel="prev" title="2. リテラルブロック" href="literal_block.html" />
     <link rel="shortcut icon" type="image/png" href="../../../_static/py.png" />
     
     <script type="text/javascript" src="../../../_static/copybutton.js"></script>
@@ -32,15 +33,18 @@
           <a href="../../../genindex.html" title="総合索引"
              accesskey="I">索引</a></li>
         <li class="right" >
-          <a href="ch02.html" title="2章 パーセプトロン"
+          <a href="../sphinx/index.html" title="Sphinx"
+             accesskey="N">次へ</a> |</li>
+        <li class="right" >
+          <a href="literal_block.html" title="2. リテラルブロック"
              accesskey="P">前へ</a> |</li>
     <li><img src="../../../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://murnana.github.io/study-with-python/">Pythonの勉強</a> &#187;</li>
     
 
-          <li class="nav-item nav-item-1"><a href="../index.html" >書籍(またはサイト)</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">ゼロから作るDeep Learning ―― Pythonで学ぶディープラーニングの理論と実装</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >module(もしくはpackage)</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" accesskey="U">reStructuredText</a> &#187;</li>
     <li class="right">
         
 
@@ -65,41 +69,25 @@
           <div class="body" role="main">
             
   <div class="section" id="id1">
-<h1>3章 ニューラルネットワーク<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
-<p>入力信号の総和を出力信号に変換する関数を、一般に <strong>活性化関数</strong> (activation function)という。
-活性化関数には候補となる関数がいくつかある。</p>
-<p>パーセプトロンの場合は、閾値を境にして値が変わるため、「ステップ関数」や「階段関数」と呼ばれる</p>
-<p>活性化関数はほかにもある。
-今回は <strong>シグモイド関数</strong> (sigmoid function)について。</p>
-<div class="section" id="id2">
-<h2>シグモイド関数<a class="headerlink" href="#id2" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>シグモイド関数の一般項は</p>
-<div class="math notranslate nohighlight">
-\[h(x) = \frac{1 + \exp(-x)}{1}\]</div>
-<p>ここでいうexpとは <strong>ネイピア数</strong> のことを指す。</p>
-<p>(<a class="reference external" href="../../../../src/books/deep_learning_from_scratch/stepAndSigmoid.py">Source code</a>)</p>
-<div class="figure">
-<img alt="../../../_images/stepAndSigmoid.png" src="../../../_images/stepAndSigmoid.png" />
-</div>
-</div>
-<div class="section" id="rectified-linear-unit-relu">
-<h2>Rectified Linear Unit; ReLU (正規化線形関数、ランプ関数)<a class="headerlink" href="#rectified-linear-unit-relu" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<p>ReLUは、 <strong>0未満の時は0、0以上の時は0以上の値</strong> を出力する関数</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}h(x) = \left\{ \begin{array}{ll}
-    x &amp; (x &gt; 0) \\
-    0 &amp; (x \leq 0)
-\end{array} \right.\end{split}\]</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">relu</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<h1>3. 引用<a class="headerlink" href="#id1" title="このヘッドラインへのパーマリンク">¶</a></h1>
+<div class="highlight-restructuredtext notranslate"><div class="highlight"><pre><span></span>This is an ordinary paragraph, introducing a block quote.
+
+    &quot;It is my business to know things.  That is my trade.&quot;
+
+    -- Sherlock Holmes
 </pre></div>
 </div>
-</div>
-<div class="section" id="id3">
-<h2>行列でまとめて学習する<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
+<p>This is an ordinary paragraph, introducing a block quote.</p>
+<blockquote>
+<div><p>&quot;It is my business to know things.  That is my trade.&quot;</p>
+<p class="attribution">&mdash;Sherlock Holmes</p>
+</div></blockquote>
+<div class="admonition seealso">
+<p class="first admonition-title">参考</p>
+<dl class="last docutils">
+<dt><a class="reference external" href="http://docutils.sphinx-users.jp/docutils/docs/ref/rst/restructuredtext.html#block-quotes">reStructuredText マークアップ仕様 — Docutils documentation in Japanese 0.12 ドキュメント</a></dt>
+<dd>引用ブロックについて</dd>
+</dl>
 </div>
 </div>
 
@@ -109,23 +97,16 @@
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../../../index.html">目次</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">3章 ニューラルネットワーク</a><ul>
-<li><a class="reference internal" href="#id2">シグモイド関数</a></li>
-<li><a class="reference internal" href="#rectified-linear-unit-relu">Rectified Linear Unit; ReLU (正規化線形関数、ランプ関数)</a></li>
-<li><a class="reference internal" href="#id3">行列でまとめて学習する</a></li>
-</ul>
-</li>
-</ul>
-
   <h4>前のトピックへ</h4>
-  <p class="topless"><a href="ch02.html"
-                        title="前の章へ">2章 パーセプトロン</a></p>
+  <p class="topless"><a href="literal_block.html"
+                        title="前の章へ">2. リテラルブロック</a></p>
+  <h4>次のトピックへ</h4>
+  <p class="topless"><a href="../sphinx/index.html"
+                        title="次の章へ">Sphinx</a></p>
   <div role="note" aria-label="source link">
     <h3>このページ</h3>
     <ul class="this-page-menu">
-      <li><a href="../../../_sources/docs/books/deep_learning_from_scratch/ch03.rst.txt"
+      <li><a href="../../../_sources/docs/modules/reStructuredText/quote.rst.txt"
             rel="nofollow">ソースコードを表示</a></li>
     </ul>
    </div>
@@ -152,15 +133,18 @@
           <a href="../../../genindex.html" title="総合索引"
              >索引</a></li>
         <li class="right" >
-          <a href="ch02.html" title="2章 パーセプトロン"
+          <a href="../sphinx/index.html" title="Sphinx"
+             >次へ</a> |</li>
+        <li class="right" >
+          <a href="literal_block.html" title="2. リテラルブロック"
              >前へ</a> |</li>
     <li><img src="../../../_static/py.png" alt=""
              style="vertical-align: middle; margin-top: -1px"/></li>
     <li><a href="https://murnana.github.io/study-with-python/">Pythonの勉強</a> &#187;</li>
     
 
-          <li class="nav-item nav-item-1"><a href="../index.html" >書籍(またはサイト)</a> &#187;</li>
-          <li class="nav-item nav-item-2"><a href="index.html" >ゼロから作るDeep Learning ―― Pythonで学ぶディープラーニングの理論と実装</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >module(もしくはpackage)</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="index.html" >reStructuredText</a> &#187;</li>
     <li class="right">
         
 

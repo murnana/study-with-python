@@ -20,3 +20,9 @@ http://docutils.sourceforge.net/rst.html
     :numbered:
 
     *
+
+
+
+.. seealso::
+
+    `reStructuredText マークアップ仕様 — Docutils documentation in Japanese 0.12 ドキュメント <http://docutils.sphinx-users.jp/docutils/docs/ref/rst/restructuredtext.html>`_

@@ -9,7 +9,7 @@ from pathlib import Path
 
 _sphinx_path = 'sphinx'
 _doctree_path = 'sphinx/__doctree__'
-_api_reSt_path = Path('sphinx', 'api')
+_api_reSt_path = Path('sphinx', 'docs', '_modules')
 _module_path = Path('src')
 _docs_path = 'docs'
 

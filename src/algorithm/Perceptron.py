@@ -1,7 +1,7 @@
 import numpy
 from matplotlib import pyplot
 
-class Perceptron:
+class perceptron:
     """
     パーセプトロン
     正確には、パーセプトロンのノード
@@ -75,7 +75,7 @@ if __name__ == "__main__":
     eta     = 0.1
 
     # パーセプトロン作成
-    percept = Perceptron(3)
+    percept = perceptron(3)
 
     # 100回学習させる
     epoch   = 100

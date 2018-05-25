@@ -45,3 +45,12 @@ ReLUは、 **0未満の時は0、0以上の時は0以上の値** を出力する
 
     def relu(x):
         return np.maximum(0, x)
+
+
+
+行列でまとめて学習する
+========================
+
+.. sourcecode:: ipython
+
+

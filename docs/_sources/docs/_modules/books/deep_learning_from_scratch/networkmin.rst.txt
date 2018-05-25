@@ -1,0 +1,7 @@
+networkmin module
+=================
+
+.. automodule:: networkmin
+    :members:
+    :undoc-members:
+    :show-inheritance:
