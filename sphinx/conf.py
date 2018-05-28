@@ -133,12 +133,12 @@ templates_path = ['_templates']
 # Whether to show links to the files in HTML.
 plot_html_show_formats = False
 
-# A dictionary containing any non-standard rcParams
-# that should be applied before each plot.
-plot_rcparams = {
-}
+# # A dictionary containing any non-standard rcParams
+# # that should be applied before each plot.
+# plot_rcparams = {
+# }
 
-# By default, rcParams are applied when context option is not used in a plot directive.
-# This configuration option overrides this behavior and applies rcParams before each plot.
-plot_apply_rcparams = {
-}
+# # By default, rcParams are applied when context option is not used in a plot directive.
+# # This configuration option overrides this behavior and applies rcParams before each plot.
+# plot_apply_rcparams = {
+# }

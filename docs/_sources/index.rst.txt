@@ -7,5 +7,6 @@ Pythonの勉強
 .. toctree::
     :titlesonly:
 
+    docs/language_reference/index
     docs/modules/index
     docs/books/index

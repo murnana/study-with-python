@@ -7,7 +7,7 @@ Python標準ライブラリ
     :glob:
     :titlesonly:
 
-    **/index
+    *
 
 
 

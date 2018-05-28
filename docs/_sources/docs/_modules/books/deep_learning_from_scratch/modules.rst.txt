@@ -5,4 +5,4 @@ deep_learning_from_scratch
    :maxdepth: 4
 
    networkmin
-   stepAndSigmoid
+   step_and_sigmoid
