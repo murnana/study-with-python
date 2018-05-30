@@ -106,6 +106,12 @@ ENV/
 # pipenv
 .venv/
 
+# MNIST
+*.gz
+*.pkl
+
 # /src/**
 /src/**/*.pdf
 /src/**/*.png
+!/src/books/deep_learning_from_scratch/dataset/*.png
+!/src/books/deep_learning_from_scratch/ch03/sample_weight.pkl

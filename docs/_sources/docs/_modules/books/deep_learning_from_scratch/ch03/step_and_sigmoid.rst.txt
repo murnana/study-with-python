@@ -1,0 +1,7 @@
+step\_and\_sigmoid module
+=========================
+
+.. automodule:: step_and_sigmoid
+    :members:
+    :undoc-members:
+    :show-inheritance:

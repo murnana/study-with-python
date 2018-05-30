@@ -77,7 +77,7 @@
 <div class="math notranslate nohighlight">
 \[h(x) = \frac{1 + \exp(-x)}{1}\]</div>
 <p>ここでいうexpとは <strong>ネイピア数</strong> のことを指す。</p>
-<p>(<a class="reference external" href="../../../../src/books/deep_learning_from_scratch/step_and_sigmoid.py">Source code</a>)</p>
+<p>(<a class="reference external" href="../../../../src/books/deep_learning_from_scratch/ch03/step_and_sigmoid.py">Source code</a>)</p>
 <div class="figure">
 <img alt="../../../_images/step_and_sigmoid.png" src="../../../_images/step_and_sigmoid.png" />
 </div>
@@ -96,9 +96,192 @@
 </div>
 </div>
 <div class="section" id="id3">
-<h2>行列でまとめて学習する<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
-<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span>
+<h2>3層ニューラルネットワークの実装<a class="headerlink" href="#id3" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>行列とは何かは知っているので省略！</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">three_layer_neural_network.py</span><a class="headerlink" href="#id9" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">step_and_sigmoid</span>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">恒常関数</span>
+<span class="sd">値をそのまま返す関数のこと</span>
+<span class="sd">:param numpy.array: x</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span> <span class="nf">identity_function</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span>
+
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">ネットワークの構築</span>
+<span class="sd"> 重みとバイアスの初期化をします</span>
+<span class="sd"> …本当は学習結果で分かった重みを突っ込む気がする</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span> <span class="nf">init_network</span><span class="p">():</span>
+    <span class="n">network</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="c1"># 1層目の重みとバイアス</span>
+    <span class="n">network</span><span class="p">[</span><span class="s1">&#39;W1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">]])</span>
+    <span class="n">network</span><span class="p">[</span><span class="s1">&#39;b1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">])</span>
+
+    <span class="c1"># 2層目の重みとバイアス</span>
+    <span class="n">network</span><span class="p">[</span><span class="s1">&#39;W2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">]])</span>
+    <span class="n">network</span><span class="p">[</span><span class="s1">&#39;b2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+
+    <span class="c1"># 3層目の重みとバイアス</span>
+    <span class="n">network</span><span class="p">[</span><span class="s1">&#39;W3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]])</span>
+    <span class="n">network</span><span class="p">[</span><span class="s1">&#39;b3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+
+    <span class="k">return</span> <span class="n">network</span>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">入力からニューラルネットワークを通じて出力する</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="c1"># 1層目のニューロンを計算する</span>
+    <span class="n">a1</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">network</span><span class="p">[</span><span class="s1">&#39;W1&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="n">network</span><span class="p">[</span><span class="s1">&#39;b1&#39;</span><span class="p">]</span>
+    <span class="n">z1</span> <span class="o">=</span> <span class="n">step_and_sigmoid</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span>
+
+    <span class="c1"># 2層目のニューロンを計算する</span>
+    <span class="n">a2</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">z1</span><span class="p">,</span> <span class="n">network</span><span class="p">[</span><span class="s1">&#39;W2&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="n">network</span><span class="p">[</span><span class="s1">&#39;b2&#39;</span><span class="p">]</span>
+    <span class="n">z2</span> <span class="o">=</span> <span class="n">step_and_sigmoid</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span>
+
+    <span class="c1"># 3層目のニューロンを計算する</span>
+    <span class="n">a3</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">z2</span><span class="p">,</span> <span class="n">network</span><span class="p">[</span><span class="s1">&#39;W3&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="n">network</span><span class="p">[</span><span class="s1">&#39;b3&#39;</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">identity_function</span><span class="p">(</span><span class="n">a3</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">y</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">network</span> <span class="o">=</span> <span class="n">init_network</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;network is {network}&#39;</span><span class="p">)</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">])</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;x = {x}&#39;</span><span class="p">)</span>
+
+    <span class="n">y</span> <span class="o">=</span> <span class="n">forward</span><span class="p">(</span><span class="n">network</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;y = {y}&#39;</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>学習問題の種類<a class="headerlink" href="#id4" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>補足と言いつつ実は大事なのでは</p>
+<div class="section" id="id5">
+<h3>分類問題<a class="headerlink" href="#id5" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>データがどのクラスに属するのか。
+例えば、人の画像から性別を判断する、など</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>ソフトマックス</dt>
+<dd>全ての入力信号から影響を受ける出力信号を1つ出す
+出力は合計すると1になることから、「確率」として解釈することができる</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>回帰問題<a class="headerlink" href="#id6" title="このヘッドラインへのパーマリンク">¶</a></h3>
+<p>データから(連続的な)数値を予測する問題。
+例えば、人の画像から体重を予測する、など</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>恒常関数</dt>
+<dd>入力信号1つに対して、出力信号を1つ出す</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="exp">
+<h2>指数(exp)の扱いに注意<a class="headerlink" href="#exp" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>指数をそのまま扱うと、オーバーフローで <code class="xref py py-const docutils literal notranslate"><span class="pre">infinity</span></code> や :<code class="xref py py-const docutils literal notranslate"><span class="pre">nan</span></code> が出てきたりする
+Python2かPython3かによっても最大値が変わるので、都度確認したほうが良い。</p>
+<p>今回はPython3なので…</p>
+<ul class="simple">
+<li>整数は(一応)無制限</li>
+<li>浮動小数点はCのdouble(<span class="math notranslate nohighlight">\(2.225074 * 10^{-308} &lt; x &lt; 1.797693 * 10^{308}\)</span>)</li>
+</ul>
+<p>数値の型はほかにもあるけれど割合…</p>
+<div class="admonition seealso">
+<p class="first admonition-title">参考</p>
+<p><a class="reference external" href="http://enajet.air-nifty.com/blog/2011/09/python-9a0e-1.html">Python ：　整数最大値、辞書項目数の最大値: enajet</a></p>
+<dl class="docutils">
+<dt><a class="reference external" href="https://docs.python.org/ja/3/library/stdtypes.html#typesnumeric">4. 組み込み型 — Python 3.6.5 ドキュメント</a></dt>
+<dd>4.4. 数値型 int, float, complex</dd>
+</dl>
+<p class="last"><a class="reference external" href="http://www.cc.kyoto-su.ac.jp/~yamada/programming/float.html">浮動小数点数型と誤差</a></p>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>出力層のニューロン数<a class="headerlink" href="#id8" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>出力層は一般的に、分類したい種類(クラス)の数に設定する</p>
+</div>
+<div class="section" id="mnist">
+<h2>MNIST を使用した実践<a class="headerlink" href="#mnist" title="このヘッドラインへのパーマリンク">¶</a></h2>
+<p>Python3系ではPILは使えない(おかしい、Python3の書籍のはず…)
+ので、pillowを入れる。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ pip install pillow
+</pre></div>
+</div>
+<p>このドキュメントではpipenvを使っているので</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ pipenv install pillow
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">参考</p>
+<p class="last"><a class="reference external" href="https://qiita.com/ukwksk/items/483d1b9e525667b77187">python3系でのPython Image Libraryの使用方法</a></p>
+</div>
+<p>写経結果:</p>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">mnist_show.py</span><a class="headerlink" href="#id10" title="このコードへのパーマリンク">¶</a></div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">MNIST を使用した実践</span>
+<span class="sd">元のソース: https://github.com/oreilly-japan/deep-learning-from-scratch</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
+<span class="n">dirname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">))</span>
+<span class="c1"># 親ディレクトリを追加</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dirname</span><span class="p">,</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">from</span> <span class="nn">dataset.mnist</span> <span class="kn">import</span> <span class="n">load_mnist</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>   <span class="c1"># Python3ではpilが使えないので、pillowを使用している</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">イメージを開く</span>
+<span class="sd">他のプログラムを通して開きます</span>
+<span class="sd">:param numpy.array: img 画像データの入った二次元行列</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="k">def</span> <span class="nf">img_show</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
+    <span class="n">pil_img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">uint8</span><span class="p">(</span><span class="n">img</span><span class="p">))</span> <span class="c1"># numpy.arrayのデータをPILのデータオブジェクトに変換</span>
+    <span class="n">pil_img</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="c1"># MNISTの読み込み</span>
+    <span class="c1"># flatten=True で1次元配列にしている</span>
+    <span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">t_train</span><span class="p">),</span> <span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">t_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">load_mnist</span><span class="p">(</span><span class="n">flatten</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+    <span class="n">img</span> <span class="o">=</span> <span class="n">x_train</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>    <span class="c1"># 訓練画像を1枚選択する</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="n">t_train</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># ↑の訓練ラベルを引っ張り出す</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>        <span class="c1"># 「5」という画像であることを指す</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>            <span class="c1"># (784,) 28 * 28の画像が一次元になっている</span>
+    <span class="n">img</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>   <span class="c1"># 形状を元の画像サイズに変形</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>            <span class="c1"># (28, 28) 28 * 28の二次元になった</span>
+
+    <span class="n">img_show</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -114,7 +297,15 @@
 <li><a class="reference internal" href="#">3章 ニューラルネットワーク</a><ul>
 <li><a class="reference internal" href="#id2">シグモイド関数</a></li>
 <li><a class="reference internal" href="#rectified-linear-unit-relu">Rectified Linear Unit; ReLU (正規化線形関数、ランプ関数)</a></li>
-<li><a class="reference internal" href="#id3">行列でまとめて学習する</a></li>
+<li><a class="reference internal" href="#id3">3層ニューラルネットワークの実装</a></li>
+<li><a class="reference internal" href="#id4">学習問題の種類</a><ul>
+<li><a class="reference internal" href="#id5">分類問題</a></li>
+<li><a class="reference internal" href="#id6">回帰問題</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#exp">指数(exp)の扱いに注意</a></li>
+<li><a class="reference internal" href="#id8">出力層のニューロン数</a></li>
+<li><a class="reference internal" href="#mnist">MNIST を使用した実践</a></li>
 </ul>
 </li>
 </ul>

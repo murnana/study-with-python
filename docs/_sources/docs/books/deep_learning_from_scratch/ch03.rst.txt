@@ -24,7 +24,7 @@
 ここでいうexpとは **ネイピア数** のことを指す。
 
 
-.. plot:: ../src/books/deep_learning_from_scratch/step_and_sigmoid.py
+.. plot:: ../src/books/deep_learning_from_scratch/ch03/step_and_sigmoid.py
 
 
 
@@ -48,9 +48,103 @@ ReLUは、 **0未満の時は0、0以上の時は0以上の値** を出力する
 
 
 
-行列でまとめて学習する
-========================
+3層ニューラルネットワークの実装
+=================================
 
-.. sourcecode:: ipython
+行列とは何かは知っているので省略！
 
 
+.. literalinclude:: ../../../../src/books/deep_learning_from_scratch/ch03/three_layer_neural_network.py
+    :language: python
+    :caption: three_layer_neural_network.py
+
+
+
+
+学習問題の種類
+=================================
+
+補足と言いつつ実は大事なのでは
+
+
+分類問題
+---------
+データがどのクラスに属するのか。
+例えば、人の画像から性別を判断する、など
+
+- ソフトマックス
+    全ての入力信号から影響を受ける出力信号を1つ出す
+    出力は合計すると1になることから、「確率」として解釈することができる
+
+
+回帰問題
+----------
+データから(連続的な)数値を予測する問題。
+例えば、人の画像から体重を予測する、など
+
+- 恒常関数
+    入力信号1つに対して、出力信号を1つ出す
+
+
+
+
+指数(exp)の扱いに注意
+======================
+指数をそのまま扱うと、オーバーフローで :py:const:`infinity` や ::py:const:`nan` が出てきたりする
+Python2かPython3かによっても最大値が変わるので、都度確認したほうが良い。
+
+今回はPython3なので…
+
+- 整数は(一応)無制限
+- 浮動小数点はCのdouble(:math:`2.225074 * 10^{-308} < x < 1.797693 * 10^{308}`)
+
+数値の型はほかにもあるけれど割合…
+
+.. seealso::
+
+    `Python ：　整数最大値、辞書項目数の最大値: enajet <http://enajet.air-nifty.com/blog/2011/09/python-9a0e-1.html>`_
+
+    `4. 組み込み型 — Python 3.6.5 ドキュメント <https://docs.python.org/ja/3/library/stdtypes.html#typesnumeric>`_
+        4.4. 数値型 int, float, complex
+
+    `浮動小数点数型と誤差 <http://www.cc.kyoto-su.ac.jp/~yamada/programming/float.html>`_
+
+
+
+
+出力層のニューロン数
+======================
+出力層は一般的に、分類したい種類(クラス)の数に設定する
+
+
+
+
+MNIST を使用した実践
+======================
+Python3系ではPILは使えない(おかしい、Python3の書籍のはず…)
+ので、pillowを入れる。
+
+
+.. code-block:: shell
+
+    $ pip install pillow
+
+
+
+このドキュメントではpipenvを使っているので
+
+.. code-block:: shell
+
+    $ pipenv install pillow
+
+
+.. seealso::
+
+    `python3系でのPython Image Libraryの使用方法 <https://qiita.com/ukwksk/items/483d1b9e525667b77187>`_
+
+
+写経結果:
+
+.. literalinclude:: ../../../../src/books/deep_learning_from_scratch/ch03/mnist_show.py
+    :language: python
+    :caption: mnist_show.py

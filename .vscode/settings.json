@@ -11,4 +11,5 @@
     },
     "restructuredtext.builtDocumentationPath": "${workspaceFolder}/docs",
     "restructuredtext.confPath": "${workspaceRoot}/sphinx",
+    "autoDocstring.docstringFormat": "sphinx",
 }

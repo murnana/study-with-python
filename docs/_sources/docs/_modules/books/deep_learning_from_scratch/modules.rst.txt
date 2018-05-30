@@ -4,5 +4,5 @@ deep_learning_from_scratch
 .. toctree::
    :maxdepth: 4
 
-   networkmin
-   step_and_sigmoid
+   common
+   dataset

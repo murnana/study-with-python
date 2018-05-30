@@ -1,0 +1,78 @@
+common package
+==============
+
+Submodules
+----------
+
+common.functions module
+-----------------------
+
+.. automodule:: common.functions
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+common.gradient module
+----------------------
+
+.. automodule:: common.gradient
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+common.layers module
+--------------------
+
+.. automodule:: common.layers
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+common.multi\_layer\_net module
+-------------------------------
+
+.. automodule:: common.multi_layer_net
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+common.multi\_layer\_net\_extend module
+---------------------------------------
+
+.. automodule:: common.multi_layer_net_extend
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+common.optimizer module
+-----------------------
+
+.. automodule:: common.optimizer
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+common.trainer module
+---------------------
+
+.. automodule:: common.trainer
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+common.util module
+------------------
+
+.. automodule:: common.util
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: common
+    :members:
+    :undoc-members:
+    :show-inheritance:
